@@ -4,12 +4,14 @@ import "./index.css";
 
 import { books } from "./books.js";
 import Book from "./Book";
+import { greeting } from "./testing/testing";
 
 const names = ["john", "peter", "susan"];
 const newNames = names.map((name) => {
 	return <h1>{name}</h1>
 })
 function BookList() {
+	console.log(greeting);
 	return (
 		<section className="bookList">
 			{books.map((book) => {
