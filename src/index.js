@@ -3,51 +3,50 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 // setup variables
-const firstBook = {
-	img: "https://images-na.ssl-images-amazon.com/images/I/81eB+7+CkUL.jpg",
-	author: "Amelia Hepworth",
-	title: "I Love You to the Moon and Back",
-};
-
-const secondBook = {
-	img: "https://m.media-amazon.com/images/I/81SeB1RxPIL._SY522_.jpg",
-	title: "Conversations with God",
-};
+const books = [
+	{
+		id: 1,
+		img: "https://images-na.ssl-images-amazon.com/images/I/81eB+7+CkUL.jpg",
+		author: "Amelia Hepworth",
+		title: "I Love You to the Moon and Back",
+	},
+	{
+		id: 2,
+		img: "https://m.media-amazon.com/images/I/81SeB1RxPIL._SY522_.jpg",
+		author: "Neale Donald Walsch",
+		title: "Conversations with God",
+	},
+	{
+		id: 3,
+		img: "https://m.media-amazon.com/images/I/51jqSNUjV6L._SY445_SX342_.jpg",
+		author: "Dale Carnegie",
+		title: "The quick and easy way to effective speaking",
+	}
+];
+const names = ["john", "peter", "susan"];
+const newNames = names.map((name) => {
+	return <h1>{name}</h1>
+})
 function BookList() {
 	return (
 		<section className="bookList">
-			<Book
-				img={firstBook.img}
-				title={firstBook.title}
-				author={firstBook.author}
-			>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-					magnam aliquid quae perspiciatis suscipit similique! Aliquid debitis,
-					sint incidunt neque qui repudiandae deserunt minima ipsum ducimus non.
-					Nesciunt adipisci totam molestias officiis excepturi deleniti
-					molestiae assumenda quo, accusantium fugiat incidunt, eius sit aut
-					neque! Nesciunt iure laborum aperiam veniam dolore!
-				</p>
-			</Book>
-			<Book
-				img={secondBook.img}
-				title={secondBook.title}
-				author={secondBook.author}
-			/>
+			{books.map((book) => {
+				return (
+					<Book book={book} key={book.id} />
+				)
+			})}
 		</section>
 	);
 }
 
 const Book = (props) => {
-	const { img, author, title, children } = props;
+	const { img, author, title } = props.book;
 	return (
 		<article className="book">
 			<img src={img} alt="" width="200px" />
 			<h1>{title}</h1>
 			<h4>{author}</h4>
 			{/* <p>{let x = 67}</p> // This is not allowed in JSX */}
-			{children}
 		</article>
 	);
 };
