@@ -2,26 +2,52 @@ import React from "react"; // This is ES6 functionality. It is not specific to r
 import ReactDOM from "react-dom";
 import "./index.css";
 
+// setup variables
+const firstBook = {
+	img: "https://images-na.ssl-images-amazon.com/images/I/81eB+7+CkUL.jpg",
+	author: "Amelia Hepworth",
+	title: "I Love You to the Moon and Back",
+};
+
+const secondBook = {
+	img: "https://m.media-amazon.com/images/I/81SeB1RxPIL._SY522_.jpg",
+	title: "Conversations with God",
+};
 function BookList() {
 	return (
 		<section className="bookList">
-			<Book />
+			<Book
+				img={firstBook.img}
+				title={firstBook.title}
+				author={firstBook.author}
+			>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+					magnam aliquid quae perspiciatis suscipit similique! Aliquid debitis,
+					sint incidunt neque qui repudiandae deserunt minima ipsum ducimus non.
+					Nesciunt adipisci totam molestias officiis excepturi deleniti
+					molestiae assumenda quo, accusantium fugiat incidunt, eius sit aut
+					neque! Nesciunt iure laborum aperiam veniam dolore!
+				</p>
+			</Book>
+			<Book
+				img={secondBook.img}
+				title={secondBook.title}
+				author={secondBook.author}
+			/>
 		</section>
 	);
 }
 
-const Book = () => {
+const Book = (props) => {
+	const { img, author, title, children } = props;
 	return (
 		<article className="book">
-         <img
-            src="https://images-na.ssl-images-amazon.com/images/I/81eB+7+CkUL.jpg"
-            alt=""
-            width="200px"
-         />
-         <h1>I love you to the moon</h1>
-         <h4 style={{ color: "#617", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-            Amelia Hepworth
-         </h4>
+			<img src={img} alt="" width="200px" />
+			<h1>{title}</h1>
+			<h4>{author}</h4>
+			{/* <p>{let x = 67}</p> // This is not allowed in JSX */}
+			{children}
 		</article>
 	);
 };
